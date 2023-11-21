@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TEP-UltimaEntrega:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f35a9e30-8e62-4ed1-9147-4fd5b2cb9ab4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/java_cup_11b_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lexico.flex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sintactico.cup" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TEP-UltimaEntrega.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/default.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prueba.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Analizadores/Lexico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Analizadores/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Analizadores/parser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Analizadores/sym.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InterfazGrafica/BuscadorArchivo.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InterfazGrafica/BuscadorArchivo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InterfazGrafica/Consola.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/InterfazGrafica/Consola.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="f35a9e30-8e62-4ed1-9147-4fd5b2cb9ab4" name="Changes" comment="tabla de simbolos">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/TEP_UltimaEntrega_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TEP-UltimaEntrega.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TEOTP-SegundaEntrega.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +39,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/roman lehmann/IdeaProjects/TEP-UltimaEntrega",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "vcs.Git"
   }
@@ -63,6 +51,21 @@
       <recent name="C:\Users\roman lehmann\IdeaProjects\TEP-UltimaEntrega\src" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="TEOTP-SegundaEntrega" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="TEOTP-SegundaEntrega" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,7 +75,29 @@
       <option name="presentableId" value="Default" />
       <updated>1700603625886</updated>
     </task>
+    <task id="LOCAL-00001" summary="TEO TP SEGUNDA ENTREGA">
+      <option name="closed" value="true" />
+      <created>1700604094894</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700604094894</updated>
+    </task>
+    <task id="LOCAL-00002" summary="tabla de simbolos">
+      <option name="closed" value="true" />
+      <created>1700604166525</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700604166525</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="TEO TP SEGUNDA ENTREGA" />
+    <MESSAGE value="tabla de simbolos" />
+    <option name="LAST_COMMIT_MESSAGE" value="tabla de simbolos" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
