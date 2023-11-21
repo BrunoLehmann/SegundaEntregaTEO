@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="TEP-UltimaEntrega:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/TEP_UltimaEntrega_jar</output-path>
-    <root id="archive" name="TEP-UltimaEntrega.jar">
+  <artifact type="jar" name="TEOTP-SegundaEntrega:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TEOTP_SegundaEntrega_jar</output-path>
+    <root id="archive" name="TEOTP-SegundaEntrega.jar">
       <element id="module-output" name="TEOTP-SegundaEntrega" />
       <element id="extracted-dir" path="$USER_HOME$/Desktop/TP-PrimeraParte/java-cup-11b_1.jar" path-in-jar="/" />
     </root>
