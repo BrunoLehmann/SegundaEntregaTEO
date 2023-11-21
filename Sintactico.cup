@@ -1,0 +1,225 @@
+import java.util.ArrayList;
+import java.util.List;
+import java_cup.runtime.*;
+import java_cup.runtime.Scanner;
+
+parser code
+{:
+    public String res = "";
+    /**MEetodo que se llama auntomaticamente ante algun error sintactico*/
+    public void syntax_error(Symbol s){
+        System.out.println("Error en la linea " + (s.right+1) + " columna " + s.left + ". "
+            + s + " no reconocido. Valor " + s.value );
+            res = res + "Error en la linea " + (s.right+1) + " columna " + s.left + ". " + s + " no reconocido. Valor " + s.value;
+    }
+:}
+
+action code
+{:
+:}
+
+
+/* Declaracion de Terminales*/
+terminal ID, COMA, CONST_INT, CONST_STRING, CONST_FLOAT,
+CONST_BIN, CONST_HEXA, PRDEFINE, PRENDDEFINE, PRPROGRAM,
+PREND, MENOR, MAYOR, PRINT, PRFLOAT, PRSTRING, DP,
+PYC, CA, CC, PA, PC, LLAVEA, LLAVEC, ASIGN, PRIF, PRELSE,
+PRWHILE, PRWRITE, MAYIGUAL, MENIGUAL,
+EQUIVALENTE, DISTINTO, SUMA, RESTA, MULTIPLICACION, 
+DIVISION, PRAND, PROR, PRCONTAR;
+
+/* Declaracion de No Terminales */
+non terminal pgm, program, bloqueDeclaraciones, declaraciones, 
+listaDeclaracion, declaracion, tipoDato, pgm1, pgm2, programa1, 
+programa2, sentencia, asignacionMultiple, listaAsignacion,
+iteracion, seleccion, contar, condicionContar, comparacionContar,
+write, writeCte, condicion, comparacion, comparador, expresion, 
+termino, factor, lista, constante;
+
+
+
+start with pgm;
+
+pgm ::= program {: System.out.println("pgm Regla 0. Compila correctamente llegando al simbolo start");
+                    res = res + "pgm Regla 0. Compila correctamente llegando al simbolo start \n"; :};
+
+program ::= bloqueDeclaraciones  pgm1 {: System.out.println("[Regla 1] Programa con declaraciones");
+                                        res = res + "[Regla 1] Programa con declaraciones \n"; :}
+            | pgm2 {: System.out.println("[Regla 2] Programa sin declaraciones");
+                      res = res + "[Regla 2] Programa sin declaraciones \n"; :};
+
+bloqueDeclaraciones ::= PRDEFINE declaraciones PRENDDEFINE {: System.out.println("[Regla 3] BloqueDeclaraciones");
+                        res = res + "[Regla 3] BloqueDeclaraciones \n"; :};
+
+declaraciones ::= declaraciones listaDeclaracion {: System.out.println("[Regla 4] Lista de Declaraciones de varios elementos");
+                                                    res = res + "[Regla 4] Lista de Declaraciones de varios elementos \n"; :}
+                | listaDeclaracion {: System.out.println("[Regla 5] Lista de Declaraciones un elemento" );
+                                        res = res + "[Regla 5] Lista de Declaraciones un elemento \n"; :};
+        
+listaDeclaracion ::= MENOR declaracion MAYOR {: System.out.println("[Regla 6] < Declaracion >");
+                                                res = res + "[Regla 6] < Declaracion > \n"; :};
+
+declaracion ::= tipoDato COMA declaracion COMA ID {: System.out.println("[Regla 7] Declaracion de mas de una variable");
+                                                      res = res + "[Regla 7] Declaracion de mas de una variable \n"; :}
+                | tipoDato MAYOR DP MENOR ID {: System.out.println("[Regla 8] Declaracion de una variable");
+                                                 res = res + "[Regla 8] Declaracion de una variable \n"; :};
+
+tipoDato ::= PRINT:val {: System.out.println("[Regla 9] Tipo de dato entero  = " + val);
+                           res = res + "[Regla 9] Tipo de dato entero  = " + val + "\n";
+                           RESULT = val; :}
+            | PRFLOAT:val {: System.out.println("[Regla 10] Tipo de dato flotante  = " + val);
+                             res = res + "[Regla 10] Tipo de dato flotante  = " + val + "\n";
+                             RESULT = val; :}
+            | PRSTRING:val {: System.out.println("[Regla 11] Tipo de dato string  = " + val);
+                              res = res + "[Regla 11] Tipo de dato string  = " + val + "\n";
+                              RESULT = val; :};
+
+pgm1 ::= PRPROGRAM programa1 PREND {: System.out.println("[Regla 12] Programa con variables");
+                                       res = res + "[Regla 12] Programa con variables \n"; :};
+
+pgm2 ::= PRPROGRAM programa2 PREND {: System.out.println("[Regla 13] Programa solo de write");
+                                        res = res + "[Regla 13] Programa solo de write \n"; :};
+
+programa1 ::= sentencia {: System.out.println("[Regla 14] Sentencia");
+                            res = res + "[Regla 14] Sentencia \n"; :};
+
+programa1 ::= programa1 sentencia    {: System.out.println("[Regla 15] Sentencias");
+                                         res = res + "[Regla 15] Sentencias \n"; :};
+
+sentencia ::= asignacionMultiple {: System.out.println("[Regla 16] AsignacionMultiple");
+                                       res = res + "[Regla 16] AsignacionMultiple \n"; :};
+
+sentencia ::= iteracion {: System.out.println("[Regla 17] Iteracion");
+                            res = res + "[Regla 17] Iteracion \n"; :};
+
+sentencia ::= seleccion {: System.out.println("[Regla 18] Seleccion");
+                            res = res + "[Regla 18] Seleccion \n"; :};
+
+sentencia ::= write {: System.out.println("[Regla 19] Write");
+                        res = res + "[Regla 19] Write \n"; :};
+
+programa2 ::= programa2 writeCte {: System.out.println("[Regla 20] Write de constantes");
+                                    res = res + "[Regla 20] Write de constantes \n"; :}
+            | writeCte {: System.out.println("[Regla 21] WriteCte ");
+                                    res = res + "[Regla 21] WriteCte \n"; :};
+
+asignacionMultiple ::= listaAsignacion ASIGN expresion {: System.out.println("[Regla 22] ListaAsignacion ASIGN Expresion");
+                                                            res = res + "[Regla 22] ListaAsignacion ASIGN Expresion \n"; :}
+                | listaAsignacion ASIGN CONST_STRING {: System.out.println("[Regla 23] ListaAsignacion ASIGN CONST_STRING");
+                                                            res = res + "[Regla 23] ListaAsignacion ASIGN CONST_STRING \n"; :};
+
+listaAsignacion ::= listaAsignacion ID ASIGN {: System.out.println("[Regla 24] ListaAsignacion ID ASIGN");
+                                                res = res + "[Regla 24] ListaAsignacion ID ASIGN \n"; :}
+                | ID:id {: System.out.println("[Regla 25] Variable ID Valor = " + id);
+                            res = res + "[Regla 25] Variable ID Valor = " + id + "\n";
+                             RESULT = id; :};
+
+contar ::= PRCONTAR PA condicionContar PYC CA lista CC PC {: System.out.println("[Regla 26] Contar");
+                                                              res = res + "[Regla 26] Contar \n"; :}
+        | PRCONTAR PA condicionContar PYC CA CC PC {: System.out.println("[Regla 27] Contar Vacio");
+                                                        res = res + "[Regla 27] Contar Vacio \n"; :};
+
+write ::= PRWRITE ID {: System.out.println("[Regla 28] WRITE ID");
+                        res = res + "[Regla 28] WRITE ID \n"; :}
+        | writeCte {: System.out.println("[Regla 29] WriteCte");
+                      res = res + "[Regla 29] WriteCte \n"; :};
+
+
+writeCte ::= PRWRITE constante {: System.out.println("[Regla 30] WRITE Constante");
+                                  res = res + "[Regla 30] WRITE Constante \n"; :}
+        | PRWRITE CONST_STRING {: System.out.println("[Regla 31] WRITE CONST_STRING");
+                                  res = res + "[Regla 31] WRITE Constante String \n"; :};
+
+iteracion ::= PRWHILE PA condicion PC LLAVEA programa1 LLAVEC {: System.out.println("[Regla 32] Iteracion While");
+                                                                  res = res + "[Regla 32] Iteracion While \n"; :};
+
+seleccion ::= PRIF PA condicion PC LLAVEA programa1 LLAVEC PRELSE LLAVEA programa1 LLAVEC {: System.out.println("[Regla 33] Seleccion If/Else");
+                                                                                              res = res + "[Regla 33] Seleccion If/Else \n"; :};
+
+seleccion ::= PRIF PA condicion PC LLAVEA programa1 LLAVEC {: System.out.println("[Regla 34] Seleccion If");
+                                                                res = res + "[Regla 34] Seleccion If \n"; :};
+
+condicion ::= comparacion {: System.out.println("[Regla 35] Comparacion");
+                              res = res + "[Regla 35] Comparacion \n"; :};
+
+condicion ::= comparacion PRAND comparacion {: System.out.println("[Regla 36] Comparacion PRAND Comparacion");
+                                                res = res + "[Regla 36] Comparacion PRAND Comparacion \n"; :};
+
+condicion ::= comparacion PROR comparacion {: System.out.println("[Regla 37] Comparacion OR Comparacion");
+                                                res = res + "[Regla 37] Comparacion OR Comparacion \n"; :};
+
+comparacion ::= expresion comparador expresion {: System.out.println("[Regla 38] Expresion Comparador Expresion");
+                                                    res = res + "[Regla 38] Expresion Comparador Expresion \n"; :};
+
+condicionContar ::= comparacionContar {: System.out.println("[Regla 39] Comparacion_Contar");
+                                         res = res + "[Regla 39] Comparacion_Contar \n"; :};
+
+condicionContar ::= comparacionContar PRAND comparacionContar {: System.out.println("[Regla 40] Comparacion_Contar PRAND Comparacion_Contar");
+                                                                  res = res + "[Regla 40] Comparacion_Contar PRAND Comparacion_Contar \n"; :};
+
+condicionContar ::= comparacionContar PROR comparacionContar {: System.out.println("[Regla 41] Comparacion_Contar PROR Comparacion_Contar");
+                                                                res = res + "[Regla 41] Comparacion_Contar PROR Comparacion_Contar \n"; :};
+
+comparacionContar ::= comparador expresion {: System.out.println("[Regla 42] Comparador Expresion");
+                                              res = res + "[Regla 42] Comparador Expresion \n"; :};
+
+comparador ::= MAYIGUAL {: System.out.println("[Regla 43] Simbolo >= ");
+                           res = res + "[Regla 43] Simbolo >=  \n"; :}
+        | MENIGUAL  {: System.out.println("[Regla 44] Simbolo <= ");
+                       res = res + "[Regla 44] Simbolo <=  \n"; :}
+        | MENOR {: System.out.println("[Regla 45] Simbolo < ");
+                   res = res + "[Regla 45] Simbolo <  \n"; :}
+        | MAYOR {: System.out.println("[Regla 46] Simbolo > ");
+                    res = res + "[Regla 46] Simbolo >  \n"; :}
+        | EQUIVALENTE {: System.out.println("[Regla 47] Simbolo == ");
+                         res = res + "[Regla 47] Simbolo ==  \n"; :}
+        | DISTINTO {: System.out.println("[Regla 48] Simbolo <> ");
+                      res = res + "[Regla 48] Simbolo <>  \n"; :};
+
+expresion ::= expresion SUMA termino {: System.out.println("[Regla 49] Expresion + Termino");
+                                        res = res + "[Regla 49] Expresion + Termino \n"; :}
+        | expresion RESTA termino {: System.out.println("[Regla 50] Expresion - Termino");
+                                      res = res + "[Regla 50] Expresion - Termino \n"; :}
+        | termino {: System.out.println("[Regla 51] Termino ");
+                       res = res + "[Regla 51] Termino \n"; :};
+
+termino ::= termino MULTIPLICACION factor {: System.out.println("[Regla 52] Termino * Factor");
+                                              res = res + "[Regla 52] Termino * Factor \n";
+                                            :}
+        | termino  DIVISION factor {: System.out.println("[Regla 53] Termino / Factor ");
+                                        res = res + "[Regla 53] Termino / Factor \n";
+                                         :}
+        | factor:f {: System.out.println("[Regla 54] Factor" + f);
+                      res = res + "[Regla 54] Factor" + f + "\n";
+                      RESULT = f;
+                   :};
+
+factor ::= PA expresion PC {: System.out.println("[Regla 55] Parentesis_Abierto Expresion Parentesis_Cerrado");
+                              res = res + "[Regla 55] Parentesis_Abierto Expresion Parentesis_Cerrado \n"; :}
+        | ID:id  {: System.out.println("[Regla 56] Factor ID = " + id);
+                    res = res + "[Regla 56] Factor ID = " + id + "\n";
+                    RESULT = id; :}
+        | constante:cte {: System.out.println("[Regla 57] constante" + cte);
+                        res = res + "[Regla 57] constante" + cte + "\n";
+                        RESULT = cte;
+                         :}
+        | contar {: System.out.println("[Regla 58] Funcion Contar");
+                    res = res + "[Regla 58] Funcion Contar \n"; :};
+
+lista ::=  lista COMA expresion {: System.out.println("[Regla 59] Lista");
+                                   res = res + "[Regla 59] Lista \n"; :}
+        | expresion {: System.out.println("[Regla 60] Expresion ");
+                       res = res + "[Regla 60] Expresion \n"; :};
+
+constante ::= CONST_INT:val {: System.out.println("[Regla 61] Constante = " + val);
+                               res = res + "[Regla 61] Constante = " + val + "\n";
+                               RESULT = val; :}
+        | CONST_FLOAT:val {: System.out.println("[Regla 62] Constante = " + val);
+                             res = res + "[Regla 62] Constante = " + val + "\n";
+                             RESULT = val; :}
+        | CONST_BIN:val {: System.out.println("[Regla 63] Constante = " + val);
+                            res = res + "[Regla 63] Constante = " + val  + "\n";
+                            RESULT = val; :}
+        | CONST_HEXA:val {: System.out.println("[Regla 64] Constante = " + val);
+                            res = res + "[Regla 64] Constante = " + val  + "\n";
+                            RESULT = val; :};

@@ -1,0 +1,17 @@
+DEFINE
+<INT, INT>:<a, d>
+<STRING, FLOAT> : <s, resul>
+ENDDEFINE
+PROGRAM
+res := 5 + a*d
+resul:= CONTAR (<a+b;[d,d*3/e,25,c])
+resul:= CONTAR (<34 AND ==c+3 ; [1,2,3*d,4,5])
+resul:= CONTAR (>a-5 ;[])
+s := "Hola Mundo"
+a := 1000
+WRITE s
+WRITE 11
+END
+
+
+
