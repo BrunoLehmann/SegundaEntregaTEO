@@ -1,0 +1,20 @@
+Nombre	Token	Tipo	Valor	Tamaño
+a	ID	nulo	nulo	nulo
+d	ID	nulo	nulo	nulo
+s	ID	nulo	nulo	nulo
+resul	ID	nulo	nulo	nulo
+res	ID	nulo	nulo	nulo
+_5	CONST_INT	nulo	5	nulo
+b	ID	nulo	nulo	nulo
+_3	CONST_INT	nulo	3	nulo
+e	ID	nulo	nulo	nulo
+_25	CONST_INT	nulo	25	nulo
+c	ID	nulo	nulo	nulo
+_34	CONST_INT	nulo	34	nulo
+_1	CONST_INT	nulo	1	nulo
+_2	CONST_INT	nulo	2	nulo
+_4	CONST_INT	nulo	4	nulo
+_Hola Mundo	CONST_STRING	nulo	Hola Mundo	12
+_1000	CONST_INT	nulo	1000	nulo
+_10	CONST_INT	nulo	10	nulo
+_11	CONST_INT	nulo	11	nulo
